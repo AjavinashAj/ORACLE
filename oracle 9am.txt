@@ -1,0 +1,2838 @@
+ 
+ oracle :- 
+
+ 1 SQL
+ 2 PL/SQL 
+   
+ Database
+ DBMS
+ RDBMS
+ ORDBMS                      
+
+ introduction to oracle
+ versions of oracle
+ client/server arch
+ installation 
+
+SQL :-
+
+ intro to sql
+ sql commands
+ how to connect to oracle
+ creating users
+ datatypes in oracle
+ creating tables
+ storing data 
+ displaying data 
+       filtering
+       sorting
+       functions
+       grouping
+       joins
+       set operations
+       subqueries
+ integrity constraints
+ views
+ indexes
+ 
+ PL/SQL
+     basic programming
+     error handling
+     procedures
+     functions
+
+what is Database ?
+
+=> a Database is a organized collection of 
+   interrelated data , for example a univ
+   db stores data related to students,
+   courses and faculty.
+
+ Types of Databases :- 
+ ---------------------
+
+  1 OLTP DB
+  2 OLAP DB
+
+ => OLTP is used for storing day-to-day transactions
+    and OLAP is used for analysis.
+
+ => OLTP is used for running business and OLAP 
+    is used to analyze business.
+ 
+ => day-to-day operations on db includes 
+
+   C create
+   R read
+   U update
+   D delete
+
+ DBMS :- 
+ --------
+
+ => DBMS stands for database managemnt system 
+    and it a software used to create and to 
+    manage database.
+
+ => DBMS is an interface between user and db.
+
+ Evolution of DBMS :- 
+ --------------------
+
+ 1960      fms (file mgmt system)
+
+ 1970      hdbms (hierarchical dbms)
+           ndbms (network dbms)
+
+ 1980      rdbms (relational dbms)
+
+ 1990      ordbms (object relational dbms)
+
+01-jun-22
+
+RDBMS :- 
+---------
+
+=> rdbms concepts are introduced by E.F.CODD
+=> E.F.CODD introduced 12 rules called codd rules
+=> a dbms that supports all the 12 rules is called perfect rdbms
+
+information rule :-
+-------------------
+
+=> according to information rule data must be organized in 
+   tables i.e. rows and columns.
+
+    Database  =   collection of tables
+    Table     =   collection of rows & cols
+    Row       =   collection of field values
+    Column    =   collection of values assigned to one field
+
+  => every table must contain primary key to uniquely identify
+   the records.
+ 
+     ex :- accno,empid,aadharno,panno,voterid
+
+ => one table related to another table using foreign key.
+
+  ex :- 
+
+   orders                    		   customers
+   ordid  ord_dt  del_dt  cid      cid   name  addr
+   1000   ??      ??      10    		10    A     HYD
+   1001   ??      ??      11    		11    B     HYD
+   1002   ??      ??      12    		12    C     HYD
+
+ RDBMS softwares :- 
+ ------------------
+
+ oracle      from oracle corp
+ mysql       from oracle corp
+ sql server  from microsoft
+ db2         from IBM
+ postgresql  from postgresql forum
+ rds         from amazon
+
+ ORDBMS :- (object relational dbms)
+ ---------
+
+ => ordbms is combination of rdbms and oops
+
+      ORDBMS  =  RDBMS + OOPS (reusability)
+
+ => RDBMS doesn't support reusability but ORDBMS supports
+    reusability.
+
+ examples :- 
+
+  oracle upto 7 ver RDBMS
+  oracle from 8 ver ORDBMS 
+  postgresql 
+ 
+ DB Development Life Cycle :- 
+ ----------------------------
+
+1  Design
+2  Development
+3  Testing
+4  Implementation
+5  Maintenance
+
+=>  Designing db means designing tables and db is designed by
+    db designer or architect by using 
+
+     1 ER model (Entity Relationship)
+     2 Normalization
+
+ => DB is developed by db developers & dba by using
+    any rdbms software like oracle.
+
+           Developer               DBAs
+
+          creating tables        installation of oracle 
+          creating views         creating database
+          creating synonyms      creating userids
+          creating sequences     db backup & restore
+          creating indexes       db export & import
+          creating procedures    performance tuning
+          creating functions
+          creating triggers
+          writing queries 
+ 
+ => DB is tested by QA team by using testing tools 
+
+ => implementation means moving db from DEV server to PROD   server
+
+ ================================================================
+
+02-jun-22      				 ORACLE
+                          -------
+
+ => oracle is basically a rdbms product from oracle corp 
+    and also supports features of ordbms and used to
+    create and to manage database.
+
+  versions :- 
+  -----------
+
+  1,2,3,4,5,6,7,8i,9i,10g,11g,12c,18c,19c,21c       
+
+      i  => internet
+      g  => grid
+      c  => cloud
+
+ => upto 7 ver oracle supports desktop applications and
+    from 8 onwards oracle supports internet applications.
+
+ => grid means collection of server , from 10g onwards
+    db can be accessed through mutliple servers and 
+    grid improves database availability.
+
+ => from 12c onwards oracle db can deployed in two ways
+
+   1  on premises
+   2  on cloud 
+
+ => in " on premises " db is deployed in the server managed
+    by client.
+
+ => in " on cloud " db is deployed in the server managed by 
+    cloud service provide for ex amazon.
+
+  CLIENT/SERVER Architecture :- 
+  -----------------------------
+
+  1 server
+  2 client
+
+ => SERVER is a system where oracle software is installed
+    and running and inside the server oracle manages 
+    two memories
+
+   1  DB
+   2  INSTANCE
+
+ => DB is created in HD and acts as permanent storage
+ => INSTANCE is created in RAM and acts as temporary storage
+ => using CLIENT system users can 
+
+   1 connects to server
+   2 submit requests to server
+   3 recieves response from server
+
+  client tools :- 
+  --------------
+
+  1 SQLPLUS (CUI based) 
+  2 SQL DEVELOPER (GUI based)
+
+  USER-----SQLPLUS-----------------ORACLE------DB
+
+                      SQL 
+                      ====
+
+ => SQL stands for structured query language.
+ => language used to communicate with oracle server.
+ => user communicates with oracle by sending commands 
+    called queries.
+ => a query is a command/instruction/question submitted to
+    oracle to perform some operation over db.
+
+    USER---SQLPLUS----------SQL----------ORACLE-----DB
+           tool             lang        software  storage
+ 
+  => SQL is originally introduced by IBM and initial name
+     of this language was "SEQUEL"  and later it is renamed
+     to SQL.
+
+  => based on operations over db SQL is categorized into
+     following sublanguages.
+
+      DDL (DATA DEFINITION LANG)
+      DML (DATA MANIPULATION LANG)
+      DRL (DATA RETRIEVAL LANG)
+      TCL (TRANSACTION CONTROL LANG)
+      DCL (DATA CONTROL LANG)
+
+                        SQL
+
+   DDL         DML      DRL          TCL         DCL
+   
+   create      insert   select       commit      grant
+   alter       update                rollback    revoke
+   drop        delete                savepoint
+   truncate    insert all
+   rename      merge 
+   flashback
+   purge
+
+ DATA & DATA DEFINITION :- 
+ -------------------------
+   
+    empid  ename sal     DATA DEFINITION / METADATA
+      1    A     8000    DATA 
+
+ 03-jun-22
+
+ schema :- 
+ ---------
+
+ => a user in oracle db is called schema
+ => objects created by user are called schema objects
+
+ SERVER
+   DATABASE
+        USER
+          TABLE
+             DATA
+
+ SERVER
+     ORCL
+        SYSTEM/MANAGER    (ADMIN)
+
+How to connect to oracle :-
+--------------------------
+
+ => open sqlplus and enter username & password 
+
+     username :- SYSTEM
+     password :- MANAGER
+
+     OR
+
+     username :- SYSTEM/MANAGER
+
+creating user in oracle db :-
+-----------------------------
+
+=> only DBA is having permissions to create new user
+
+step 1 :-  connect as admin
+
+     USERNAME :- SYSTEM/MANAGER
+
+step 2 :-  create user
+
+    CREATE USER <NAME> IDENTIFIED BY <PWD>
+    DEFAULT TABLESPACE USERS
+    QUOTA UNLIMITED ON USERS ;
+
+ EX :- CREATE USER C##BATCH9AM IDENTIFIED BY NARESH
+       DEFAULT TABLESPACE USERS
+       QUOTA UNLIMITED ON USERS ;
+
+ step 3 :- granting permissions
+
+    GRANT CONNECT,RESOURCE TO C##BATCH9AM ;
+
+       CONNECT => to connect to db
+       RESOURCE => to create tables
+        DBA      => all permissions
+
+   note :- if connect,resource are granted then user is 
+   called normal user , if dba is granted then user is
+   called admin user.
+
+ changing password :- 
+ --------------------
+
+ => both user and admin can change password
+
+ 1 by user :-  (C##BATCH9AM/NARESH)
+ ------------
+
+ SQL> PASSWORD
+Changing password for C##BATCH9AM
+Old password: NARESH
+New password: ORACLE
+Retype new password: ORACLE
+Password changed
+
+2 by DBA :-  (SYSTEM/MANAGER)
+-----------
+
+SQL> ALTER USER C##BATCH9AM IDENTIFIED BY TIGER ;
+
+ Datatypes in oracle :- 
+ ----------------------
+
+ => a datatype specifies 
+
+  1 type of the data allowed
+  2 amount of memory allocated 
+
+                        Datatypes
+
+     CHAR             NUMERIC       DATE         BINARY
+
+ASCII     UNICODE     number(p)     date         bfile
+                      number(p,s)   timestamp    blob
+char      nchar
+varchar2  nvarchar2
+long      nclob
+clob
+
+char(size) :- 
+--------------
+
+ => allows ascii characters (a-z,A-Z,0-9,*,$--  256 chars)
+    upto 2000.
+
+ => char is recommended for fixed length char columns 
+
+     ex :-   NAME   CHAR(10)
+
+             sachin----
+                     wasted
+            
+             ravi------
+                     wasted 
+
+  => in char extra bytes are wasted so char is 
+     not recommended for variable length fields and char
+     is recommend for fixed length fields.
+
+      ex :-     STATE_CODE  CHAR(2)
+         
+                AP
+                TS
+                MH
+
+               COUNTRY_CODE  CHAR(3)
+
+                 IND
+                 USA 
+                 
+               PANNO    CHAR(10)
+
+ VARCHAR2 :- 
+ -----------
+
+ => allows ascii chars upto 4000 
+ => varchar2 is recommended for variable length fields 
+
+    ex :-  NAME   VARCHAR2(10)
+
+           sachin----
+                   released 
+
+           VEHNO  VARCHAR2(10)
+
+           TS08A1234
+         
+   LONG :- 
+   --------
+
+   => allows character data upto 2GB 
+
+            TEXT   LONG
+
+  CLOB :-    (character large object)
+  --------
+
+  => allows character data upto 4GB.
+
+         TEXT  CLOB
+
+Question :-
+-----------
+
+       sname   char(10)       ename   varchar2(10)
+
+       naresh                 naresh
+
+ =>  how much memory consumed by sname,ename ?
+  
+  ans :- 10 & 6 
+
+NCHAR/NVARCHAR2/NCLOB :- (N => National)
+-----------------------
+
+=> allows unicode chars (65536) that includes all ascii chars   
+   and chars belongs to different languages.
+ 
+ Number(p) :- 
+ -----------
+
+ => allows numeric data upto 38 digits 
+ => allows whole numbers i.e. numbers without decimal 
+
+   ex :- 1 empid  NUMBER(4)
+
+          10   
+          100
+          1000
+          10000  => not accepted
+
+         2  aadharno  NUMBER(12)
+ 
+ NUMBER(P,S) :-
+ --------------
+
+ => allows real numbers i.e. numbers with decimal places.
+
+  P => precision => total no of digits allowed
+  S => scale     => no of digits allowed after decimal
+
+   ex :-    SAL   NUMBER(7,2)
+
+            5000
+            5000.50
+           50000.50  
+          500000.50 => not allowed
+          
+            5000.507 => allowed => 5000.51
+            5000.503 => allowed => 5000.50 
+
+ note :- if before decimal exceeds number is not accepted.
+         if after decimal exceeds number is rounded.
+
+ Question :- 
+ 
+
+ => which datatype you recommend for storing 
+    unpredictable decimal places for interest amount  
+    for ex  123  , 123.12 , 123.1234
+
+   a NUMBER(p)
+   b NUMBER(P,S)
+   c NUMBER
+   d None 
+
+   ans :- c 
+
+ DATE :- 
+ --------
+
+ => allows date & time
+ => time is optional , if not entered then oracle stores 12:00AM
+ => default date format in oracle is DD-MON-YY/YYYY
+
+   ex :-   DOB    DATE
+ 
+           15-MAR-05    =>  15-MAR-2005
+           10-OCT-95    =>  10-OCT-2095
+           10-OCT-1995  =>  10-OCT-1995
+
+ TIMESTAMP :- 
+ ------------
+
+ => allows date,time and also milliseconds.
+
+   ex :-  T   TIMESTAMP
+
+          06-JUN-22 9:52:00.123
+          --------- ------- ----
+           DATE      TIME    MS
+
+ Binary Types :-
+ ---------------
+
+ => binary types allows binary data that includes multimedia
+    objects like audio,video,images.
+
+  1 BFILE (Binary File)
+  2 BLOB  (Binary Large Object)
+
+  => BFILE is called external lob because lob stored outside
+     db but db stores path
+
+  => BLOB is called internal lob because lob stored inside db
+
+ creating tables in oracle :- 
+ ----------------------------
+ 
+ CREATE TABLE <tabname>
+ (
+   colname  DATATYPE(size),
+   colname  DATATYPE(size),
+   -------------------
+  );
+
+ Rules :- 
+ --------
+
+ 1 tabname should start with alphabet.
+
+ 2 tabname should not contain spaces & special chars
+   but allows _,$,#.
+
+ 3 table can have max 1000 cols
+
+ 4 no of rows unlimited.
+
+  ex :-  tablename :- emp123     valid
+                      123emp     invalid
+                      emp 123    invalid
+                      emp*123    invalid
+                      emp_123    valid
+
+=> create table with following structure ?
+
+ EMP
+ empid   ename   job   sal   hiredate   dno
+
+ CREATE TABLE emp
+ (
+   empid  NUMBER(4),
+   ename  VARCHAR2(10),
+   job    VARCHAR2(10),
+   sal    NUMBER(7,2),
+   hiredate DATE,
+   dno     NUMBER(2)
+  );
+
+ => above command created table structure/definition/metadata
+    that includes columns,datatype and size.
+ 
+DESC :- (describe)
+------
+
+ => command to see the structure of the table
+
+   ex :- SQL> DESC emp
+
+			  empid   NUMBER(4)
+          ename  VARCHAR2(10)
+          job    VARCHAR2(10)
+          sal    NUMBER(7,2)
+        hiredate DATE
+          dno    NUMBER(2)
+
+ inserting data into table :- 
+ ----------------------------
+
+ => "insert" command is used to insert data into table.
+
+  syn :- INSERT INTO <tabname>
+             VALUES(v1,v2,v3,-----);
+
+ => char and date values must be enclosed in '  '
+
+ ex :- 
+
+  1  INSERT INTO emp 
+          VALUES(100,'sachin','clerk',4000,'10-FEB-20',20);
+
+  2 INSERT INTO emp
+         VALUES(101,'ajay','manager',8000,SYSDATE,10);
+
+ => above insert commands inserted data into instance(ram)
+    so to save this data execute commit command.
+
+    SQL>COMMIT;
+
+ inserting multiple rows :- 
+ ---------------------------
+   
+ => to execute insert command multiple times with different
+    values use variables prefixed with "&".
+
+   ex :- INSERT INTO emp 
+            VALUES(&empid,&ename,&job,&sal,&hiredate,&dno);
+ 
+ Enter value for empid:  102
+Enter value for ename: 'vijay'
+Enter value for job: 'analyst'
+Enter value for sal: 6000
+Enter value for hiredate: SYSDATE
+Enter value for dno: 30
+ 
+1 row created.
+
+SQL> /
+Enter value for empid: 103
+Enter value for ename: 'sindhu'
+Enter value for job: 'manager'
+Enter value for sal: 9000
+Enter value for hiredate: '20-APR-19'
+Enter value for dno: 10
+ 
+
+1 row created.
+ 
+07-jun-22
+
+ inserting nulls :- 
+ -----------------
+
+ => null means blank or empty
+ => it is not equal to 0 or space
+ => nulls can be inserted in two ways 
+
+ method 1 :- (explicit)
+ -----------
+
+ INSERT INTO emp VALUES(104,'satish','',NULL,'12-MAR-20',20);
+
+ method 2 :- (implicit)
+
+ INSERT INTO 
+  emp(empid,ename,hiredate,dno) 
+   VALUES(105,'rahul',sysdate,30);
+
+ remaining two fields job,sal are filled with null
+
+ Operators in ORACLE :- 
+ ---------------------
+
+ 1 Arithmetic Operators  => +  -   *    /    
+
+ 2 Relational Operators  => >  >=  <  <=  =   <> or !=   
+
+ 3+4 => 7
+ 3>4 => false
+
+ 3 Logical Operators     =>  AND  OR  NOT 
+
+ 4 Special Operators     =>  BETWEEN
+                             IN
+                             LIKE
+                             IS
+                             ANY
+                             ALL
+                             EXISTS
+
+ 5 Set Operators         => UNION
+                            UNION ALL 
+                            INTERSECT
+                            MINUS
+
+Displaying Data :-
+--------------------
+
+ => "SELECT" command is used to display data from table.
+ =>  we can display all rows or all columns
+ =>  we can display specific rows or specific columns
+
+   syn :- SELECT columns/*  FROM tabname [WHERE cond] ;
+
+           SQL = ENGLISH
+           queries =  sentences
+           clauses =     words
+
+             *  => all columns
+  
+           
+    => display all the data from emp table ?
+
+       SELECT * FROM emp ; 
+    
+    => display employee names and salaries ? 
+
+       SELECT ename,sal FROM emp ; 
+  
+    => display names,job,hiredate ? 
+
+       SELECT ename,job,hiredate FROM emp ; 
+
+ WHERE clause :- 
+ ----------------
+
+ => used to get specific row/rows from table based on a condition
+
+    WHERE condition 
+
+ condition :- 
+ ------------
+ 
+         COLNAME OP  VALUE
+
+ => OP must be any relational operator like >  < etc.
+
+ => if cond = true then row is selected
+
+ => if cond = false row is not selected 
+
+ => display employee details whose id=102 ?
+
+   SELECT * FROM emp WHERE empid=102 ;
+
+ => employee details whose name = sachin ?
+
+    SELECT * FROM emp WHERE ename='sachin' ;
+
+ => employees earning more than 5000 ?
+
+    SELECT * FROM emp WHERE sal>5000;
+
+ => who are joined after 2020 ?
+
+   SELECT * FROM emp WHERE hiredate > 2020; => error
+
+   SELECT * FROM emp WHERE hiredate > '31-DEC-2020';
+
+ => who are joined before 2020 ? 
+
+  SELECT * FROM emp WHERE hiredate < '01-JAN-2020' ;
+
+ compound condition :- 
+ --------------------
+
+ => multiple conditions combined with  AND / OR  operators
+    is called compound condition.
+
+    WHERE COND1   AND   COND2     RESULT
+          T             T          T
+          T             F          F
+          F             T          F
+          F             F          F
+
+   WHERE  COND1   OR    COND2      RESULT
+           T             T          T
+           T             F          T
+           F             T          T
+           F             F          F
+
+ 08-jun-22
+
+  => employees earning more than 5000 and less than 9000 ?
+
+     SELECT *
+     FROM emp 
+     WHERE sal>5000  AND  sal<9000 ;
+
+  => employees joined in 2020 year ?
+
+     SELECT *
+     FROM emp 
+     WHERE hiredate >= '01-JAN-2020'
+           AND
+           hiredate <= '31-DEC-2020' ;
+
+  => employees working as clerk,manager ?
+
+    SELECT *
+    FROM emp
+    WHERE job='clerk'  OR job='manager' ;
+  
+
+ => employees working as clerk,manager and earning more than 5000 ?
+
+    SELECT *
+    FROM emp
+    WHERE (
+          job='clerk'  
+          OR 
+          job='manager'
+          )
+          AND
+          sal>5000;
+
+ => employees whose id = 100,103,105 ? 
+
+    SELECT * 
+    FROM emp
+    WHERE empid=100  OR empid=103 OR  empid=105 ;
+
+ scenario :- 
+
+ STUDENT
+ sid   sname  s1  s2  s3
+ 1     A      80  90  70
+ 2     B      30  60  50 
+
+=> list of students who are passed ?
+
+ SELECT *
+ FROM student
+ WHERE s1>=35 AND s2>=35 AND s3>=35;
+ 
+=> list of students who are failed ?
+
+ SELECT *
+ FROM student
+ WHERE s1<35  OR s2<35 OR  s3<35 ;
+
+ IN operator :- 
+ --------------
+
+ => use IN operator for list comparision
+ => use IN operator for "=" comparision with multiple values
+
+   list :- 10,20,30
+           'a','b','c'
+   
+          WHERE colname = v1,v2,v3,---  => INVALID
+
+          WHERE colname IN (v1,v2,v3,--) =>  VALID
+
+ =>  employees whose id = 100,103,105  ?
+
+     SELECT * FROM emp WHERE empid IN (100,103,105);
+
+ => employees not working for dept 10,20 ?
+
+    SELECT * FROM emp WHERE dno NOT IN (10,20);
+
+ BETWEEN operator :- 
+ -------------------
+
+ => use BETWEEN operator for range comparision
+
+    WHERE COLNAME BETWEEN V1 AND V2  (COL >= V1 AND COL <= V2)
+
+ => employees earning between 5000 and 9000 ?
+
+    SELECT * FROM emp WHERE sal BETWEEN 5000 AND 9000;
+
+ => joined in 2020 ?
+
+  SELECT * FROM emp
+    WHERE hiredate BETWEEN '01-JAN-2020' AND '31-DEC-2020' ;
+
+=> not joined in 2020 ?
+
+  SELECT * FROM emp
+    WHERE hiredate NOT BETWEEN '01-JAN-2020' AND '31-DEC-2020' ;
+
+Question :- 
+
+ SELECT * FROM emp WHERE sal BETWEEN 10000 AND 5000 ;
+
+ A ERROR
+ B RETURNS ROWS
+ C RETURNS NO ROWS
+ D NONE
+
+ where col between v1 and v2   (col>=v1 and col<=v2)
+
+ where sal between 10000 and 5000 (sal>=10000 and sal<=5000)
+
+ note :- use between operator with lower and upper but not with
+  upper and lower
+
+=> employees working as clerk,manager and earning between 5000
+   and 10000 and joined in 2022 year and not working for
+   dept 20,30 ?
+
+   SELECT *
+   FROM emp 
+   WHERE job IN ('clerk','manager')
+         AND
+         sal BETWEEN 5000 AND 10000
+         AND
+         hiredate BETWEEN '01-JAN-2022' AND '31-DEC-2022'
+         AND
+         dno NOT IN (20,30);
+
+scenario :- 
+
+PRODUCTS
+prodid   name   price   category   brand
+
+=> list of redmi,realme,samsung mobile phones price between 
+   10000 and 20000 ?
+
+ SELECT *
+ FROM products
+ WHERE brand IN ('redmi','realme','samsung')
+       AND
+       category='mobiles'
+       AND
+       price BETWEEN 10000 AND 20000;
+
+
+ LIKE operator :-
+ ----------------
+
+ => use LIKE operator for pattern comparision
+
+    patterns :-  name starts with 's'
+                 name ends with 'e'
+                 name contains 'a'
+
+    WHERE colname LIKE 'pattern'
+
+ => pattern contains alphabets,digits,wildcard chars
+
+   wildcard chars :- 
+   -----------------
+
+   %  => 0 or many char
+   _  => exactly 1 char
+
+ => employees name starts with 's' ?
+
+    SELECT * FROM emp WHERE ename LIKE 's%' ;
+ 
+ => employees name ends with 'y' ?
+
+    SELECT * FROM emp WHERE ename LIKE '%y' ;
+
+ => name contains 'a' ?
+
+    SELECT * FROM emp WHERE ename LIKE '%a%' ;
+
+ => where 'a' is 3rd char in their name ?
+
+    SELECT * FROM emp WHERE ename LIKE '__a%' ;
+
+ => 'a' is the 2nd char from last ?
+
+    SELECT * FROM emp WHERE ename LIKE '%a_' ;
+
+09-JUN-22
+
+  => joined in MAR month ?
+
+   SELECT * FROM emp WHERE hiredate LIKE '%MAR%' ;
+
+  => joined in 2022 year ?
+
+     SELECT * FROM emp WHERE hiredate LIKE '%22' ;
+
+  => earning 5 digit salary ?
+
+    SELECT * FROM emp WHERE sal LIKE '_____' ;
+
+ Question :- 
+ -----------
+
+  SELECT * FROM emp WHERE job IN ('clerk','man%');
+
+ a error
+ b returns clerk,manager
+ c returns only clerk
+ d no rows
+
+  ans :- c
+
+ SELECT * FROM emp WHERE job = 'clerk'
+                         OR
+                         job LIKE 'man%' ;
+
+ans :-  b
+
+
+IS operator :-
+--------------
+
+=> used to compare with NULL / NOT NULL
+
+    WHERE COLNAME IS NULL
+    WHERE COLNAME IS NOT NULL
+
+ => employees not earning salary ?
+
+    SELECT * FROM emp WHERE sal IS NULL ; 
+
+ => employees earning salary ?
+
+    SELECT * FROM emp WHERE sal IS NOT NULL ; 
+
+ summary :- 
+
+   WHERE colname IN (v1,v2,v3,---)
+   WHERE colname BETWEEN V1 AND V2
+   WHERE colname LIKE 'pattern'
+   WHERE colname IS NULL
+
+ => display ename , annual salaries ?
+
+    SELECT ename,sal*12 as annsal
+    FROM emp ;
+
+ ALIAS :- 
+ -------
+
+ => alias means another name or alternative name
+ => used to change column heading
+
+     colname/expr [AS] alias
+
+  display  ENAME  EXPERIENCE in days ?
+
+  SELECT ename,sysdate-hiredate as experience
+  FROM emp ; 
+    
+  display  ENAME  EXPERIENCE in years ?
+
+  SELECT ename,(sysdate-hiredate)/365 as experience
+  FROM emp ; 
+
+  display ENAME  SAL   HRA  DA   TAX   TOTSAL ?
+
+     hra = house rent allowance = 20% on sal
+     da  = dearness allowance   = 30% on sal
+     tax = 10% on sal
+     totsal = sal + hra + da -tax 
+
+   SELECT ename,sal,
+          sal*0.2 as hra,
+          sal*0.3 as da,
+          sal*0.1 as tax,
+          sal+(sal*0.2)+(sal*0.3)-(sal*0.1) as totsal
+   FROM emp ;
+
+     sachin  4000   800   1200  400   5600
+
+ DML commands :- (Data Manipulation Lang)
+ ---------------
+
+ insert
+ update
+ delete
+ insert all
+ merge
+
+ => all DML commands acts on table data.
+ => all DML commands acts on instance(ram).
+ => to save the operations execute commit.
+ => to cancel the operations execute rollback.
+
+ UPDATE command :- 
+ -----------------
+
+ => command used to modify the table data
+ => we can update all rows or specific rows
+ => we can update single column or multiple columns
+
+  UPDATE tabname
+  SET colname = value , colname = value,--------
+  [WHERE cond] ;
+
+ ex :- update all the employees sal with 5000 ?
+
+       UPDATE emp SET sal=5000 ;
+
+       update employee salaries with 6000 whose sal = null ?
+
+       UPDATE emp SET sal=6000 WHERE sal IS NULL ;    
+
+       increment salary by 20% those working as clerk,manager
+       and joined in 2022 year ?
+
+       UPDATE emp 
+       SET sal = sal + (sal*0.2)
+       WHERE job IN ('clerk','manager')
+             AND
+             hiredate LIKE '%22' ;
+ 
+   => transfer the employee to 30th dept and job to manager
+      whose empid=104 ?
+
+      UPDATE emp 
+      SET dno=30 , job='manager'
+      WHERE empid=104 ; 
+
+  => update dno to null whose empid=103 ?
+
+     UPDATE emp SET dno = NULL where empid=103 ; 
+
+      NULL assignment  =
+      NULL comparision IS 
+ 
+10-jun-22
+
+  DELETE command :- 
+  -----------------
+
+  => used to delete row/rows from table.
+  => we can delete all rows or specific rows.
+
+   syn :-  DELETE FROM <tabname> [WHERE cond];
+
+   ex :-  delete all rows from emp ?
+
+          DELETE FROM emp ; 
+
+          delete employees whose experience > 1 year ?
+
+          DELETE FROM emp 
+              WHERE (SYSDATE-hiredate)/365 > 1 ;
+
+ 
+ FLASHBACK :- 
+ ------------
+
+=> using flashback we can see the data that exists some time back for ex 5 mins back data in emp table.
+
+=> a query that returns past data is called flashback query.
+
+=> used to recover data after commit.
+
+ ex :- the following query returns 5 mins back data in emp table
+
+    SELECT *
+    FROM emp 
+    AS OF TIMESTAMP(SYSDATE - INTERVAL '5' MINUTE);
+  
+
+ => by default we can flashback upto 15 mins (900secs).
+
+ recovering data after commit :-
+ -------------------------------
+
+ step 1 :- DELETE FROM emp ;
+
+ step 2 :- COMMIT;
+
+ step 3 :-  to recover data after commit then get the data
+            that exists 2 mins back and insert that data
+            into current emp table.
+
+          INSERT INTO emp 
+          SELECT *
+          FROM emp 
+          AS OF TIMESTAMP(SYSDATE - INTERVAL '2' MINUTE);
+
+ how to change flashback time limit :-
+ --------------------------------------
+
+ SYSTEM :-
+ ---------
+ 
+ SQL>ALTER SYSTEM SET UNDO_RETENTION=1800;
+
+   1800 SECS => 30 MINS
+
+ DDL commands :-  (Data Definition Lang)
+ ---------------
+
+ create
+ alter
+ drop
+ truncate
+ rename
+ flashback
+ purge
+
+ => all DDL commands acts on table structure.
+ => all DDL commands are auto committed.
+
+       DDL command = DDL command + COMMIT 
+
+ example 1 :- 
+
+  create table a(a number(2));
+  insert into a values(10);
+  insert into a values(20);
+  insert into a values(30);
+  rollback ;
+
+ output :-   create table => saved
+             inserts      => cancelled
+
+ example 2 :- 
+
+  create table a(a number(2));
+  insert into a values(10);
+  insert into a values(20);
+  create table b(b number(2));
+  insert into a values(30);
+  insert into a values(40);
+  rollback;
+
+  output :- create table a => saved
+            insert 10,20   => saved
+            create table b => saved
+            insert 30,40   => cancelled
+
+ ALTER command :- 
+ ----------------
+
+ => used to modify the table structure.
+ => using ALTER we can 
+
+    1 add columns
+    2 drop columns
+    3 rename column
+    4 modify a column
+          incr/decr field size
+          changing datatype
+           
+ Adding column :- 
+ ---------------
+
+ => add column gender to emp table ?
+
+    ALTER TABLE emp 
+         ADD (gender CHAR(1));
+
+ => after adding by default the column is filled with nulls
+    then use update command to insert data into the new column
+
+  1  UPDATE emp SET gender='M' WHERE empid=104 ;
+
+  2  UPDATE emp SET gender='&gender' WHERE empid=&empid;
+
+ Droping column :- 
+ -----------------
+
+ => drop column gender from emp table ?
+
+   ALTER TABLE emp
+        DROP (gender);
+
+ Renaming a column :- 
+ --------------------
+
+ => rename column hiredate to doj ?
+
+    ALTER TABLE emp 
+         RENAME COLUMN hiredate to doj ;
+
+    SELECT ename,sal,hiredate as doj FROM emp ; 
+ 
+   diff b/w alias and rename ?
+
+         alias                     rename
+ 
+ 1  not permanent                  permanent
+
+ 2  changes column heading         changes column name 
+    in select stmt output          in table.
+
+
+Modifying a column :- 
+--------------------
+
+1 incr / decr field size
+2 changing datatype
+
+ increase size of ename to 20 ? 
+
+  ALTER TABLE emp 
+       MODIFY(ename VARCHAR2(20));
+
+ decrease the size of ename to 10 ?
+
+ ALTER TABLE emp 
+       MODIFY(ename VARCHAR2(10)); 
+
+ALTER TABLE emp 
+       MODIFY(ename VARCHAR2(5)); => error
+
+note :- 
+
+ => column must be empty to change datatype 
+
+ ALTER TABLE emp 
+       MODIFY(empid VARCHAR2(10)); => ERROR
+ 
+11-jun-22
+
+ DROP command :- 
+ ---------------
+
+ => used to drop table from db
+ => drops table structure with data.
+ 
+  syn :- DROP TABLE <TABNAME> ;
+
+  ex :-  DROP TABLE emp ;
+
+ => from 10g when table is dropped then it is moved to 
+    recyclebin. execute the following command to see the
+    recyclebin.
+
+    SQL>SHOW RECYCLEBIN ;
+
+ FLASHBACK command :- 
+ --------------------
+
+ => introduced in 10g ver.
+ => command used to recover the table from recyclebin.
+ 
+  syn :- FLASHBACK TABLE <TABNAME> TO BEFORE DROP ;
+
+  => table is recovered with the data that exists before drop.
+
+  ex :- FLASHBACK TABLE emp TO BEFORE DROP ; 
+
+ PURGE command :- 
+ ----------------
+
+ => introduced in 10g 
+ => command used to delete object from recyclebin.
+ => once table deleted from recyclebin we cannot flashback. 
+ 
+  syn :- PURGE TABLE <tabname>; 
+
+  ex :-  PURGE TABLE emp ; 
+
+ DROP & PURGE :- 
+ ---------------
+
+    DROP TABLE emp PURGE ; 
+
+ => above command drops table and also deletes the table
+    from recyclebin.
+ 
+ TRUNCATE command :- 
+ -------------------
+
+ => command used to delete all the data from table.
+ => will empty the table.
+ => releases memory allocated for table.
+
+  syn :- TRUNCATE TABLE <tabname> ;
+
+  ex :-  TRUNCATE TABLE student ; 
+
+ => deletes only data but not structure
+
+ DROP VS DELETE VS TRUNCATE :- 
+ -----------------------------
+
+      DROP                   DELETE/TRUNCATE
+
+ 1   drops table structure   deletes only data but not 
+     with data.              structure
+
+ DELETE VS TRUNCATE :-
+ ----------------------
+
+        DELETE                        TRUNCATE
+
+1      DML                            DDL 
+
+2      can delete all or              can delete only all rows
+       specific rows                  but cannot delete specific
+                                      rows
+
+3     where cond can be               where cond cannot be
+      used with delete                used with truncate
+
+4     operation can be                operation cannot be 
+      rolledback                      rolledback 
+
+5     deletes row-by-row              deletes all rows at a time
+
+6     slower                          faster
+
+7     will not release memory          releases memory
+
+ RENAME :- 
+ ----------
+
+ => used to change tablename
+
+   syn :- RENAME <oldname> TO <newname> ;
+
+   ex :- rename table student to stud ? 
+
+         RENAME STUDENT TO STUD ;
+ 
+==============================================================
+
+							Integrity Constraints
+                 ----------------------
+
+  => Integrity constraints are rules to maintain data integrity
+     i.e. data quality.
+
+  => used to prevent users from entering invalid data.
+
+  => used to declare rules like min bal must be 1000.
+
+  Types of constraints :- 
+  -----------------------
+
+  1 NOT NULL
+  2 UNIQUE
+  3 PRIMARY KEY
+  4 CHECK
+  5 FOREIGN KEY
+  6 DEFAULT
+
+ => above constraints can be declared in two ways 
+  
+   1 column level
+   2 table level
+
+ column level :- 
+ ---------------
+
+ => if constraints are declared immediately after declaring
+    column then it is called column level.
+
+   CREATE TABLE <tabname>
+   (
+     COLNAME  DATATYPE(size) CONSTRAINT,
+     -----------------
+    );
+
+  NOT NULL :- 
+  -----------
+
+  => NOT NULL constraint doesn't accept null values.
+  => a column declared with NOT NULL is called mandatory column.
+
+  ex :- CREATE TABLE emp10
+        (
+          empid  NUMBER(4),
+          ename  VARCHAR2(10) NOT NULL 
+        );
+
+ 
+  INSERT INTO emp10 VALUES(100,'');  => ERROR
+  INSERT INTO emp10 VALUES(101,'A');
+   
+ UNIQUE :- 
+ ---------         
+
+ => unique constraint doesn't accept duplicates.
+ 
+ ex :- CREATE TABLE cust
+       (
+         cid  NUMBER(2),
+         cname VARCHAR2(10),
+         email VARCHAR2(30) UNIQUE
+        );
+   
+   
+  INSERT INTO cust VALUES(10,'A','abc@gmail.com');
+  INSERT INTO cust VALUES(11,'B','abc@gmail.com'); => ERROR
+  INSERT INTO cust VALUES(12,'C','');
+  INSERT INTO cust VALUES(13,'D','');
+
+ NOTE :- UNIQUE constraints allows nulls.
+
+PRIMARY KEY :-
+--------------
+
+ => PRIMARY KEY doesn't accept duplicates and nulls.
+ => PRIMARY KEY is combination of unique & not null.
+
+     PRIMARY KEY = UNIQUE + NOT NULL
+
+ 
+13-jun-22
+
+ex :- 
+
+ CREATE TABLE emp13
+ (
+   empid  NUMBER(4) PRIMARY KEY,
+   ename  VARCHAR2(10),
+   sal    NUMBER(7)
+ );
+
+INSERT INTO emp13 VALUES(100,'A',5000);
+INSERT INTO emp13 VALUES(100,'B',6000);=> ERROR
+INSERT INTO emp13 VALUES(NULL,'C',6000); => ERROR
+
+NOTE :- only one primary key is allowed per table
+if we want two primary keys then declare one
+column with primary key and another column with
+unique & not null.
+
+  CREATE TABLE cust
+   (
+     CUSTID    NUMBER(10) PRIMARY KEY,
+     NAME      VARCHAR2(10),
+     AADHARNO  NUMBER(12) UNIQUE NOT NULL,
+     PANNO     CHAR(10)   UNIQUE NOT NULL
+   );
+
+TABLE LEVEL :-
+---------------
+
+ CREATE TABLE emp13
+ (
+   empid  NUMBER(4),
+   ename  VARCHAR2(10),
+   sal    NUMBER(7),
+         PRIMARY KEY(empid)
+ );
+
+ diff b/w primary key & unique ?
+
+        primary key          unique
+
+ 1  doesn't allow            allows nulls
+    duplicates & nulls
+
+ 2  only one column          multiple columns
+    can be declared          can be declared
+    with primary key         with unique
+
+candidate key :-
+----------------
+
+=> a fields eligible for primary key is called
+   candidate keys.
+
+   ex :- VEHICLE
+         VEHNO  NAME  MODEL   PRICE   CHASSISNO
+
+    candidate keys :- vehno,chassisno
+    primary key    :- vehno
+    secondary key  :- chassisno
+
+ => secondary keys are declared by using unique &
+    not null.
+
+ CHECK :- 
+ --------
+
+ => use check constraing when rule based on condition.
+
+         CHECK(condition)
+
+ ex 1 :- sal must be min 3000
+
+  CREATE TABLE emp14
+  (
+    empno NUMBER(4),
+    sal   NUMBER(7) CHECK(sal>=3000)
+  );
+
+ INSERT INTO emp14 VALUES(100,1000); => ERROR
+ INSERT INTO emp14 VALUES(101,5000);
+ INSERT INTO emp14 VALUES(102,NULL);
+
+ 2  gender must be 'm','f' ? 
+
+    GENDER  CHAR(1)  CHECK(gender IN ('m','f'))
+
+ 3  amt must be multiple of 100 ?
+
+    amt  NUMBER(5) CHECK(MOD(amt,100)=0)
+
+ 4  pwd must be min 6 chars ?
+
+    pwd  varchar2(10) CHECK(LENGTH(pwd)>=6)
+
+FOREIGN KEY :- 
+--------------
+
+=> foreign key is used to establish relationship
+   between two tables.
+ 
+ PROJECTS
+ projid  name   duration   cost  client
+ 100     A      5 YEARS    100   TATA MOTORS
+ 101     B      4 YEARS    80    DBS
+ 102     C      3 YEARS    120   L&T
+
+ EMP
+ empid  ename  sal   projid references projects(projid)
+ 1       A     5000  100                  
+ 2       B     4000  101
+ 3       C     3000  999 => invalid
+ 4       D     3000  100 => VALID
+ 5       E     2000  NULL => VALID
+
+ => to establish relationship take pk of one table
+    and it to another table as fk and declare with
+    references constraint.
+
+ => fk values should match with pk values.
+
+ => fk allows duplicates & nulls.
+
+ => after declaring fk a relationship is established
+  between two tables called parent/child relationship.
+
+=> PK table is parent and fk table is child.
+
+example :- 
+
+ CREATE TABLE projects
+ (
+   projid NUMBER(3) PRIMARY KEY,
+   pname  VARCHAR2(10),
+   duration VARCHAR2(10),
+   cost     NUMBER(7),
+   client   VARCHAR2(20)
+ );
+
+ INSERT INTO projects 
+     VALUES(100,'A','5 YEARS',200,'TATA MOTORS');
+
+ INSERT INTO projects
+      VALUES(101,'B','3 YEARS',150,'DBS BANK');
+
+ CREATE TABLE emp20
+ (
+    empid  NUMBER(4) PRIMARY KEY,
+    ename  VARCHAR2(10) NOT NULL, 
+    sal    NUMBER(7) CHECK(sal>=3000),
+    projid NUMBER(3) REFERENCES projects(projid)
+  );
+
+ 
+ INSERT INTO emp20 VALUES(1,'K',5000,100);
+ INSERT INTO emp20 VALUES(2,'B',4000,999); => ERROR
+ INSERT INTO emp20 VALUES(3,'C',3000,100);
+ INSERT INTO emp20 VALUES(4,'C',3000,NULL);
+
+ NOTE :- by default oracle creates one to many (1:m)
+ relationship between the two tables , to establish
+ one to one (1:1) relationship declare foreign key
+ with unique constraint.
+
+ example for one to one (1:1) relationship :-
+ --------------------------------------------
+ 
+ DEPT
+ DNO   DNAME   
+ 10    HR 
+ 20    IT
+ 
+ MGR
+ MGRNO   MNAME    DNO   REFERENCES DEPT(DNO) UNIQUE 
+ 1       A        10
+ 2       B        20
+ 3       C        10 => ERROR
+
+ DEFAULT :- 
+ -----------
+
+ => a column can be declared with default value as follows
+
+    ex :-  hiredate  date  default sysdate
+
+ => while inserting if we skip hiredate then oracle inserts
+    sysdate.
+
+    CREATE TABLE emp21
+    (
+      empno  NUMBER(4),
+      hiredate DATE  DEFAULT SYSDATE
+    );
+
+   INSERT INTO emp21(empno) VALUES(100);
+   INSERT INTO emp21 VALUES(101,'10-MAR-22');
+   INSERT INTO emp21 VALUES(101,'');
+
+   SELECT * FROM emp21
+ 
+   100  14-JUN-22
+   101  10-MAR-22
+   102  
+
+Assignment :-
+-------------
+
+ACCOUNTS
+ACCNO   ACTYPE   BAL
+
+Rules :-
+--------
+
+ 1  accno should not be duplicate & null
+ 2  actype must be 's' or 'c'
+ 3  bal must be min 1000
+
+ TRANSACTIONS
+ TRID   TTYPE   TDATE   TAMT   ACCNO
+
+Rules :- 
+
+ 1 trid should not be duplicate and null
+ 2 ttype must be 'w' or 'd'
+ 3 d
+ 4 tamt must be multiple of 100
+ 5 accno should match with accounts table accno.
+
+ CREATE TABLE accounts
+ (
+   accno   NUMBER(10) PRIMARY KEY,
+   actype  CHAR(1)    CHECK(actype IN ('s','c')),
+   bal     NUMBER(7)  CHECK(bal>=1000)
+ );
+
+ CREATE TABLE transactions
+ (
+   trid  NUMBER(10) PRIMARY KEY,
+   ttype CHAR(1)    CHECK(ttype IN ('w','d')),
+   tdate DATE       DEFAULT SYSDATE,
+   tamt  NUMBER(7)  CHECK(MOD(tamt,100)=0),
+   accno NUMBER(10) REFERENCES accounts(accno)
+ );
+
+ 15-JUN-22
+
+ table level :-
+ --------------
+
+ => if constraints are declared after declaring all columns
+    then it is called table level.
+
+ => use table level to declare constraints for multiple or
+    combination of columns.
+
+  column level :-
+  ---------------
+
+  create table <tabname>
+  (
+    colname datatype(size) constraint,
+    -----------
+  );
+
+ table level :-
+ ------------
+ 
+ create table <tabname>
+ (
+    colname datatype(size),
+    colname datatype(size),
+    -----------------,
+         constraint
+  )
+
+ declaring check constraint at table level :- 
+ --------------------------------------------
+
+ PRODUCTS
+ prodid  name  mfd_dt  		exp_dt
+ 100     AAA   15-JUN-22		01-JAN-22     => INVALID
+
+   RULE :- exp_dt > mfd_dt 
+   
+ => in the above example condition based on multiple columns
+    so declare check constraint at table level.
+
+ CREATE TABLE products
+ (
+   prodid NUMBER(3) PRIMARY KEY,
+   pname  VARCHAR2(10) NOT NULL,
+   mfd_dt DATE ,
+   exp_dt DATE ,
+         CHECK(exp_dt>mfd_dt)
+  );
+  
+ INSERT INTO products 
+      VALUES(100,'A',sysdate,'01-JAN-22'); => ERROR
+
+  INSERT INTO products 
+      VALUES(101,'X','01-JAN-22',sysdate);
+
+ COMPOSITE PRIMARY KEY :- 
+ ------------------------
+
+ => if primary key is declared for combination of columns
+    then it is called composite primary key.
+
+ => in some tables we need combination of columns to uniquely
+    identify the records , so that combination should be 
+    declared primary key at table level.
+
+example :-
+
+  STUDENT          COURSE
+  sid   sname      cid   cname
+  1     A          10    JAVA
+  2     B          11    ORACLE
+
+  REGISTRATIONS
+  sid	 cid	  dor    fee
+  1     10    ???     ??
+  1     11    ???     ??  
+  2     10    ???     ??
+
+ => in the above exampe sid,cid combination uniquely identifies
+    the records so declare this combination as primary key
+ 
+   CREATE TABLE student
+   (
+     sid  NUMBER(2) PRIMARY KEY,
+     sname VARCHAR2(10)
+   );
+
+  CREATE TABLE course
+  (
+    cid  NUMBER(2) PRIMARY KEY,
+    cname VARCHAR2(10)
+   );
+
+  CREATE TABLE registrations
+  (
+     sid NUMBER(2) references student(sid),
+     cid NUMBER(2) references course(cid),
+     dor DATE,
+     fee NUMBER(5),
+           PRIMARY KEY(sid,cid)
+  );
+
+
+ INSERT INTO student VALUES(1,'A');
+ INSERT INTO student VALUES(2,'B');
+
+ INSERT INTO course VALUES(10,'java'); 
+ INSERT INTO course VALUES(11,'oracle');
+
+ INSERT INTO registrations VALUES(1,10,SYSDATE,5000);
+ INSERT INTO registrations VALUES(1,11,SYSDATE,5000);
+ INSERT INTO registrations VALUES(2,10,SYSDATE,5000);
+ INSERT INTO registrations VALUES(1,10,SYSDATE,5000); => ERROR
+
+ Assignment :- 
+ -------------
+
+ SALES
+ dateid   prodid   custid   qty   amount
+ 14-jun   100      10       1     2000
+ 14-jun   100      11       1     2000
+ 14-jun   101      10       1     1000
+ 15-jun   100      10       1     2000
+
+ => identify primary key and write create table command ?
+
+ composite foreign key :-
+------------------------
+
+ => if combination of columns declared foreign key then it is
+    called composite foreign key.
+
+ => a composite foreign key refers composite primary key.
+ 
+ example :-
+
+  REGISTRATIONS
+  sid	 cid	  dor    fee
+  ----------
+  1     10    ???     ??
+  1     11    ???     ??  
+  2     10    ???     ??
+
+  CERTIFICATES
+  certno     doi         sid   cid
+  1000	     15-jun-22    1     10 
+  1001      15-jun-22     1    11
+  1002      15-jun-22     2    11 => invalid
+
+ => in the above table sid,cid combination should match with
+    registrations table sid,cid combination so declare this
+    combination as foreign key at table level.
+
+  CREATE TABLE certificates
+  (
+     certno NUMBER(4) PRIMARY KEY,
+     doi    DATE,
+     sid    NUMBER(2) ,
+     cid    NUMBER(2),
+         foreign key(sid,cid) references registrations(sid,cid)
+    );
+
+
+Question :- 
+-----------
+
+ which of the following constraint cannot be declared at 
+ table level ?
+
+  A UNIQUE
+  B CHECK
+  C PRIMARY KEY
+  D NOT NULL
+  E FOREIGN KEY 
+
+  ANS :- D 
+
+17-jun-22 
+
+Adding constraints to existing table :- 
+---------------------------------------
+
+=> "ALTER"  command is used to add constraints to existing table
+ 
+example :- 
+
+  CREATE TABLE emp88
+  (
+     empno  NUMBER(4),
+     ename  VARCHAR2(10),
+     sal    NUMBER(7),
+     dno    NUMBER(2)
+  );
+
+ Adding primary key :- 
+ ----------------------
+
+ => add pk to column empno ?
+
+   ALTER TABLE emp88
+       ADD PRIMARY KEY(empno);
+
+ note :- primary key cannot be added to column that already
+ contains duplicates & nulls.
+
+ => add check constraint with cond sal>=3000 ?
+
+    ALTER TABLE emp88
+         ADD CHECK(sal>=3000);
+ 
+ => add check constraint to emp table with cond sal>=3000 ?
+
+  ALTER TABLE emp 
+         ADD CHECK(sal>=3000); => ERROR
+
+ note :- while adding constraint oracle also validates 
+ existing data , above command returns error because
+ some of the salaries less than 3000.
+
+ NOVALIDATE option :- 
+ --------------------
+
+ => if check constraint is added with NOVALIDATE option then
+    oracle will not validate existing data and it validates
+    only new data.
+
+   ALTER TABLE emp 
+         ADD CHECK(sal>=3000) NOVALIDATE ; 
+ 
+Adding Foreign key :- 
+----------------------
+
+=> add fk to column dno that refers dept table primary key   
+   i.e. deptno ?
+
+    ALTER TABLE emp88
+       ADD FOREIGN KEY(dno) REFERENCES dept(deptno);
+
+ Droping constraints :- 
+ -----------------------
+
+   ALTER TABLE <tabname>
+      DROP CONSTRAINT <name> ;
+
+ => list of tables  ? 
+
+   USER_TABLES :- 
+   --------------
+ => stores list of tables created by user
+ => system table i.e. created by oracle 
+
+    SELECT TABLE_NAME FROM USER_TABLES ; 
+
+   => list of tables name starts with E ?
+
+     SELECT TABLE_NAME 
+     FROM USER_TABLES 
+     WHERE TABLE_NAME LIKE 'E%' ;
+
+  ALL_USERS :- 
+  ------------
+
+  => system table that stores list of users 
+
+   display list of users ? 
+
+   SELECT USERNAME FROM ALL_USERS ;
+
+ USER_CONSTRAINTS :- 
+ -------------------
+
+ => stores information about constraints declared in a table.
+
+ list of constraints declared in emp88 table ?
+
+  SELECT CONSTRAINT_NAME,CONSTRAINT_TYPE,
+         SEARCH_CONDITION
+  FROM USER_CONSTRAINTS 
+  WHERE TABLE_NAME='EMP88' ;
+ 
+CONSTRAINT_NAME      C SEARCH_CONDITION
+-------------------- - ------------------------------
+SYS_C007744          R
+SYS_C007740          C sal>=3000
+SYS_C007739          P
+ 
+ => drop check constraint in emp88 table ?
+
+   ALTER TABLE emp88 
+     DROP CONSTRAINT sys_c007740 ;
+
+ => drop primary key in dept table ?
+
+    ALTER TABLE dept 
+      DROP PRIMARY KEY ;  => ERROR
+
+  note :- 
+
+=> primary key cannot be dropped if referenced by some fk
+=> primary key table cannot be dropped if referenced by some fk
+=> primary key table cannot be truncated if referenced by som fk
+
+   DROP TABLE dept ; => ERROR
+
+   TRUNCATE TABLE dept ; => ERROR
+
+ CASCADE :- 
+ ----------
+
+  ALTER TABLE dept   
+     DROP primary key CASCADE ; 
+        
+ => drops primary key with dependent foreign key.
+
+ 
+  DROP TABLE dept CASCADE CONSTRAINTS ; 
+
+
+ => drops table with dependent foreign key.
+
+ summary :- 
+
+ importance of constraints
+ types of constraints
+ declaring constraints
+       column level
+       table level
+ adding constraints to existing table
+ droping constraints 
+ getting constraints information
+
+18-jun-22
+
+ Built-in function in oracle :- 
+ ------------------------------
+
+ => a function is a program that accepts some input and performs
+    some calculation and returns one value.
+ 
+
+ Types of functions :- 
+ ---------------------
+
+ 1 string
+ 2 date
+ 3 mathematical
+ 4 conversion
+ 5 special
+ 6 analytical
+ 7 aggregate 
+
+ string functions :- 
+ -------------------
+
+ 1 upper() :- converts string to uppercase 
+
+   upper(arg)
+
+   => arg can be a string or column name
+
+  SELECT UPPER('hello') FROM DUAL ; 
+
+ What is DUAL ?
+
+ => DUAL is a dummy table provided by oracle used to select non db values.
+
+2 lower() :- converts string to lowercase 
+
+    lower(arg) 
+
+  SELECT LOWER('HELLO') FROM DUAL ; 
+
+=> display EMPNO  ENAME  SAL  ? display names in lowercase ? 
+
+   SELECT empno,LOWER(ename) as ename,sal FROM emp ; 
+
+=> convert names to lowercase in table ?
+
+   UPDATE emp SET ename=LOWER(ename) ; 
+
+ 3 INITCAP() :-  converts initials into capitals 
+
+      INITCAP(string) 
+
+   SELECT INITCAP('hello world') FROM dual ;   =>  Hello World
+
+
+ 4  LENGTH() :- returns string length i.e. no of characters 
+
+   SELECT LENGTH('hello') FROM DUAL ;  => 5 
+
+ => display employee list name contains 5 chars ?
+
+   SELECT * FROM emp WHERE ename LIKE '_____' ;
+
+   SELECT * FROM emp WHERE LENGTH(ename)=5 ; 
+
+5 SUBSTR() :- used to extract part of the string
+ 
+          SUBSTR(string,start,[len])
+
+  SUBSTR('hello welcome',7,4)   => welc
+  SUBSTR('hello welcome',10,3)  => com
+  SUBSTR('hello welcome',7)     => welcome
+ 
+  SUBSTR('hello welcome',-4,3)  => com
+  SUBSTR('hello welcome',-7)    => welcome
+  
+
+=> employees name starts with 's' ? 
+
+   SELECT * FROM emp WHERE ename LIKE 's%' ;
+
+   SELECT * FROM emp WHERE SUBSTR(ename,1,1) = 's' ;
+
+=> employee name ends with 's' ? 
+
+    SELECT * FROM emp WHERE SUBSTR(ename,-1,1)='s' ;
+
+=> employees name starts and ends with same char ?
+
+   SELECT * FROM emp WHERE ename LIKE 'a%a'
+                           OR
+                           ename LIKE 'b%b'
+                      
+  SELECT * FROM emp 
+          WHERE SUBSTR(ename,1,1) = SUBSTR(ename,-1,1);
+ 
+ => generate emailids for employees as follows ?
+
+    empno    ename        emailid
+    7369     smith        smi736@tcs.com
+    7499     allen        all749@tcs.com
+
+      ||  => concatenation operator
+
+     'a'||'b'   =>  ab
+    
+     'a'||'  '||'b'  => a b 
+
+   SELECT empno,ename,
+         SUBSTR(ename,1,3)||SUBSTR(empno,1,3)||'@tcs.com'
+            as emailid
+   FROM emp ; 
+ 
+ => store emailids in db ?  
+
+   step 1 :-  add emailid column to emp table
+
+    ALTER TABLE emp 
+         ADD (emailid VARCHAR2(30));
+
+  step 2 :- update the column with emailids 
+
+   UPDATE emp SET emailid = SUBSTR(ename,1,3)||                         
+                            SUBSTR(empno,1,3)||
+                            '@tcs.com' ;
+
+20-jun-22
+
+ lpad,rpad :-
+ ------------
+
+ => both functions are used fill string with a character
+
+     LPAD(str,len,char) => fills on left side
+     RPAD(str,len,char) => fills on right side
+
+    LPAD('hello',10,'*')  => *****hello
+    RPAD('hello',10,'*')  => hello*****
+    RPAD('*',10,'*')      => **********
+
+ => display  ENAME   SAL   ?
+                     ***
+                     ****
+
+   SELECT ename,RPAD('*',LENGTH(sal),'*') as sal
+   FROM emp;
+
+      smith  ***
+      allen  ****
+
+ scenario :- 
+ -----------
+
+ ACCOUNTS
+ ACCNO
+ 123456789123
+
+ => your a/c no XXXX9123 debited ???
+
+    RPAD('X',4,'X')||SUBSTR(accno,-4,4)
+
+ how to implement loop in sql :- 
+ -------------------------------
+ 
+ SELECT LEVEL
+ FROM DUAL
+ CONNECT BY LEVEL<=10;
+
+ => level is predefined variable intialized to 1 .
+ => everytime level is incremented by 1.
+
+ example 1 :-
+
+ SELECT RPAD('*',LEVEL,'*')
+ FROM DUAL
+ CONNECT BY LEVEL<=10;
+
+ *
+ **
+ ***
+ ****
+ *****
+
+example 2 :- 
+
+ SELECT RPAD(' ',10-LEVEL,' ')||
+        RPAD('*',LEVEL,'*')||
+        RPAD('*',LEVEL-1,'*')
+ FROM DUAL
+ CONNECT BY LEVEL<=10;
+
+         *
+        ***
+       *****
+ 
+ LTRIM,RTRIM,TRIM :- 
+ -------------------
+
+ => used to remove spaces and unwanted chars.
+
+   LTRIM(str,[char])   => removes left side
+   RTRIM(str,[char])   => removes right side
+   TRIM(str)           => removes both sides 
+
+  LTRIM('  hello   ')  => 'hello   '
+  RTRIM('  hello   ')  => '   hello'
+  TRIM('   hello   ')  => 'hello'
+
+  LTRIM('@@@hello@@@','@')  => hello@@@
+  RTRIM('@@@hello@@@','@')  => @@@hello
+  TRIM(both '@' from '@@@hello@@@@')  => hello
+
+  REPLACE() :- 
+  ------------  
+ 
+ => used to replace one string with another string
+
+     REPLACE(str1,str2,str3)
+
+ => in str1 , str2 replaced with str3.
+
+    REPLACE('hello','ell','abc')   =>  habco
+    REPLACE('hello','l','abc')     =>  heabcabco
+    REPLACE('hello','ell','')      =>  ho
+    REPLACE('@@he@@ll@@o@@','@','')  => hello
+    REPLACE('hello','elo','abc')     => hello
+    
+ TRANSLATE() :- 
+ -------------
+
+ => used to translate one char to another char.
+
+   TRANSLATE(str1,str2,str3) 
+
+  TRANSLATE('hello','elo','abc')  => habbc
+
+          e => a  
+          l => b
+          o => c 
+
+
+ => used to encrypt data i.e. converting plain text to cipher text
+
+  EX :- 
+
+   SELECT ename,
+          TRANSLATE(sal,'0123456789','$kP*T@^m#%') as sal
+   FROM emp ;
+
+   jones  2975  P%m@
+
+  => remove all special chars from '@#he*$llo%^'
+
+    output :-  hello
+
+ step 1 :- translate all the special chars to one special char
+
+   SELECT TRANSLATE('@#he*$llo%^','@#*$%^','******')
+   FROM DUAL ;
+
+     **he**llo**
+
+ step 2 :- replace '*' with null 
+
+   SELECT 
+   REPLACE(TRANSLATE('@#he*$llo%^','@#*$%^','******'),'*','')
+   FROM DUAL ;
+
+   REPLACE('**he**llo**','*','')
+ 
+REVERSE() :- 
+------------
+
+ => returns string reverse
+
+  REVERSE('hello')  => olleh
+
+=> find the employees whose name is palindrome ?
+
+   SELECT *
+   FROM emp 
+   WHERE ename = REVERSE(ename);
+
+
+mathematical functions :-
+---------------------------
+
+1 ABS() :- returns absolute value
+ 
+  ABS(-10) => 10
+
+2 POWER() :- returns power
+
+  POWER(3,2) => 9
+
+3 SQRT() :- returns square root
+
+  SQRT(16) => 4 
+
+4 SIGN() :- to find number is positive or negative
+
+  SIGN(10)    => 1 
+  SIGN(-10)   => -1
+  SIGN(10-10) => 0 
+
+5 MOD() :- returns remainder
+
+   MOD(10,2)  => 0 
+
+ => employees earning multiples of 100 ?
+
+    SELECT *
+    FROM emp 
+    WHERE MOD(sal,100)=0 ;
+
+21-jun-22
+
+Rounding numbers :- 
+--------------------
+
+ ROUND
+ TRUNC
+ CEIL
+ FLOOR
+
+ ROUND :- 
+ --------
+
+ => used to round  numbers to integer or to decimal places
+    based on average.
+
+        ROUND(number,[decimal places]) 
+
+ ex :-   
+          ROUND(38.5678)  => 39
+
+      38--------------38.5---------------39
+
+     NUMBER >= AVG  => rounded to highest
+     NUMBER < AVG   => rounded to lowest 
+
+       ROUND(38.4567)     => 38
+       ROUND(38.5678,2)   => 38.57
+       ROUND(38.5645,2)   => 38.56
+       ROUND(38.5678,3)   => 38.568
+
+       ROUND(386,-2)      => 400
+
+       300--------------350---------------400
+
+       ROUND(386,-1)      => 390
+
+       380--------------385---------------390
+
+       ROUND(386,-3)      => 0
+ 
+       0-----------------500------------------1000
+ 
+Question :-
+-----------
+
+       SELECT ROUND(4567,-1),ROUND(4567,-2),ROUND(4567,-3)
+       FROM DUAL  ;
+
+        4570        4600     5000
+
+ NOTE :- 
+
+ 1  round function can also be used to round dates 
+ 2  dates  can be rounded to year/month/day 
+
+  ROUND(sysdate,'year')  => 01-jan-22
+ 
+  01-jan-22------------30-jun-22---------------01-jan-23
+
+ ROUND(sysdate,'month')  => 01-jul-22
+
+  01-jun-22-------------15-jun---------------------01-jul-22
+
+ ROUND(sysdate,'day')  => 19-jun-22
+
+ 19-jun-22------------thu---------------26-jun-22
+
+ display ENAME  EXPERIENCE ?
+
+ SELECT ename,ROUND((SYSDATE-hiredate)/365) as expr
+ FROM emp ; 
+
+TRUNC() :- 
+----------
+
+=> always rounds number to lowest.
+
+  TRUNC(38.9)     =>   38
+
+  TRUNC(38.6784,2) =>  38.67
+  
+  TRUNC(386,-2)    =>  300
+
+  TRUNC(999,-3)    =>   0
+ 
+  TRUNC(SYSDATE,'month')  => 01-jun-22
+
+ scenario :-
+ -----------
+
+    INSERT INTO emp(empno,ename,sal,hiredate)
+        VALUES(888,'KLM',4000,SYSDATE);  => 21-JUN-22 9:45:20
+
+  display list of employees joined today ?
+
+    SELECT *
+    FROM emp
+    WHERE hiredate = SYSDATE ;  => no rows 
+
+           21-JUN-22 9:45:20  =  21-JUN-22 17:00:00
+
+ => "=" comparision with  SYSDATE always fails to overcome  
+   this problem use TRUNC function.
+
+     SELECT *
+     FROM emp
+     WHERE TRUNC(hiredate) = TRUNC(SYSDATE)
+
+           21-JUN-22 00:00:00 =  21-JUN-22 00:00:00
+
+ CEIL() :- 
+ ---------
+
+ => rounds number always to highest 
+
+    ceil(number)
+
+   CEIL(3.1)   => 4
+
+
+FLOOR() :- rounds number always to lowest
+
+   FLOOR(number) 
+
+   FLOOR(3.9)  =>  3 
+
+ DATE functions :- 
+ -----------------
+
+ SYSDATE + 10   => adds 10 days to sysdate => 01-JUL-22
+ SYSDATE - 10   => subtracts 10 days from sysdate => 11-jun-22
+ SYSDATE - hiredate => calculates difference in days
+ SYSDATE + hiredate => ERROR
+
+ ADD_MONTHS() :- 
+ ---------------
+
+ => used to add/subtract months from/to a date.
+
+     ADD_MONTHS(date,months)
+
+   ADD_MONTHS(sysdate,2)   =>  21-aug-22
+   ADD_MONTHS(sysdate,-2)  =>  21-apr-22
+
+ scenario :- 
+ ----------
+
+ GOLD_RATES
+ DATEID     RATE
+ 01-JAN-15  ???
+ 02-JAN-15  ???
+ 
+ 21-JUN-22  ???
+
+
+=> display today's gold rate ?
+=> display yesterday's gold rate ?
+=> display last month same day gold rate ?
+=> display last year same day gold rate ?
+
+ 1 SELECT *
+   FROM GOLD_RATES
+   WHERE TRUNC(DATEID)  = TRUNC(SYSDATE);
+
+ 2 SELECT *
+   FROM GOLD_RATES
+   WHERE TRUNC(DATEID) = TRUNC(SYSDATE)-1 ;
+
+ 3 SELECT *
+   FROM GOLD_RATES
+   WHERE TRUNC(DATEID) =  ADD_MONTHS(TRUNC(SYSDATE),-1) ;
+
+ 3 SELECT *
+   FROM GOLD_RATES
+   WHERE TRUNC(DATEID) = ADD_MONTHS(TRUNC(SYSDATE),-12)
+
+ 4  display last 1 month gold rates ?
+
+    SELECT *
+    FROM GOLD_RATES
+    WHERE  DATEID 
+            BETWEEN ADD_MONTHS(SYSDATE,-1) AND  SYSDATE;
+ 
+ MONTHS_BETWEEN() :- 
+ -------------------
+
+ => returns no of months between two dates 
+
+     MONTHS_BETWEEN(date1,date2) 
+
+  MONTHS_BETWEEN(SYSDATE,'21-JUN-21')  => 12
+
+  display ENAME  EXPERIENCE in months ?
+
+  SELECT ename,MONTHS_BETWEEN(SYSDATE,hiredate) as expr
+  FROM emp ;
+
+ Question :- 
+ ----------
+ 
+  display ENAME  EXPERIENCE ?
+                 M YEARS N MONTHS 
+
+  experience = 40 months = 3 YEARS 4 MONTHS 
+
+  years  =   months/12 = 40/12 = 3
+  months =   MOD(months,12) = MOD(40,12) = 4 
+
+  SELECT ename,
+      FLOOR(MONTHS_BETWEEN(sysdate,hiredate)/12) as years,
+      MOD(FLOOR(MONTHS_BETWEEN(sysdate,hiredate)),12) as month
+ FROM emp;
+   
+conversion functions :- 
+-------------------------
+
+=> used to convert one datatype to another datatype
+
+  1 TO_CHAR
+  2 TO_DATE
+  3 TO_NUMBER
+ 
+22-jun-22
+
+converting date to char :-
+--------------------------
+
+=>  dates are converted to char type to display 
+    dates in different formats.
+
+        TO_CHAR(date,format)    (date=sysdate)
+
+ formats :- 
+ -----------
+
+  TO_CHAR(sysdate,'yyyy')   =>   2022
+                    yy      =>   22
+                  year      =>   twenty-twenty two
+
+                    mm      =>   06
+                    mon     =>   jun
+                    month   =>   june
+
+                   ddd     =>    176  
+                    dd     =>    22 
+                     d     =>    4(day of the week)
+                     dy    =>    wed
+                     day   =>    wednesday
+
+                     hh    =>    hour part
+                     hh24  =>    24hr format
+                     mi    =>    minutes
+                     ss    =>    seconds
+                     AM/PM =>    am time or pm time
+  
+                     Q     =>    2
+                   (Quarter)
+                               jan-mar  1
+                               apr-jun  2
+                               jul-sep  3
+                               oct-dec  4
+
+                      w   =>   week of the month
+                      ww  =>   week of the year
+
+ => display system date in mm/dd/yy ? 
+
+    SELECT TO_CHAR(sysdate,'mm/dd/yy')
+    FROM DUAL ; 
+
+ => display ENAME HIREDATE ? 
+                  YYYY-MM-DD  DAY ?
+
+    SELECT ename,
+          TO_CHAR(hiredate,'YYYY-MM-DD day')
+    FROM emp ;
+  
+ => display current date & time ?
+
+   by default oracle displays only date but to
+   display date & time use TO_CHAR function.
+
+   SELECT TO_CHAR(sysdate,'DD.MON.YY HH:MI:SS PM')
+   FROM DUAL ; 
+
+ => display list of employees joined on sunday ?
+
+    SELECT ename,sal,TO_CHAR(hiredate,'dy') as day
+    FROM emp 
+    WHERE TO_CHAR(hiredate,'dy')='sun' ;
+
+ => display employees joined in jan,apr,dec months ?
+
+   SELECT *
+   FROM emp 
+   WHERE TO_CHAR(hiredate,'mm') IN (1,4,12) ;
+
+=> display employees joined in leap year ?
+
+   SELECT *
+   FROM emp 
+   WHERE MOD(TO_CHAR(hiredate,'yyyy'),4)=0;
+
+=> display list of employeed joined in 2nd quarter
+   of 1981 year ?
+
+   SELECT *
+   FROM emp
+   WHERE TO_CHAR(hiredate,'yyyy') = 1981 
+         AND
+         TO_CHAR(hiredate,'q') = 2 ;
+
+ converting number to char type :- 
+ ----------------------------------
+
+ => numbers converted to char type to display 
+    numbers in different formats.
+
+          TO_CHAR(number,format)
+ 
+  formats :- 
+  ----------
+
+   9               represents a digit
+   0               represents a digit
+   ,               thousand seperator
+   .               decimal seperator
+   L               currency symbol
+   C               currency 
+
+   TO_CHAR(1234,'99999')    => 1234
+   TO_CHAR(1234,'00000')    => 01234
+   TO_CHAR(1234,'000000')   => 001234
+   TO_CHAR(1234,'9,999')    => 1,234
+   TO_CHAR(1234,'9,999.99') => 1,234.00
+   TO_CHAR(1234,'L9,999')   => $1,234
+   TO_CHAR(1234,'C9,999')   => USD1,234
+
+   display ENAME SAL  ?
+
+   display sal with thousand seperator and currency
+   symbol ?
+
+   SELECT ename,TO_CHAR(sal,'L9,999') as sal
+   FROM emp ; 
+
+   how to change currency ?
+
+   ALTER SESSION SET NLS_TERRITORY='INDIA' ;
+
+   
+  converting char to date :- 
+  --------------------------
+
+      char => '22-jun-22'  
+              '06/22/22'
+              
+        TO_DATE(char,format)
+
+
+scenario :- 
+-----------
+
+1 SELECT SYSDATE + 10 FROM DUAL ; => 02-JUL22
+
+
+2 SELECT '01-JUL-22' + 100 FROM DUAL ; => ERROR
+
+  date + number => valid
+  number + number => valid
+  string + number => invalid
+
+ 3 SELECT TO_DATE('01-JUL-22','DD-MON-YY')+100
+   FROM DUAL ; 
+
+   output :- 09-OCT-22
+
+Question :- 
+
+ => write a query to display on which day
+    india got independence ?
+ 
+   SELECT 
+    TO_CHAR(
+    TO_DATE('15-AUG-1947','DD-MON-YYYY'),'DAY')     
+   FROM DUAL ;
+
+ converting char to number :- 
+ -----------------------------
+
+     char => '1234'   '1,234'   '$1,234' 
+ 
+      TO_NUMBER(char,format)
+
+    
+1  SELECT 5000 + '1,000' FROM DUAL ; => ERROR
+
+2  SELECT 5000 + TO_NUMBER('1,000','9,999')
+   FROM DUAL ; 
+
+    output :- 6000
+
+3 calculate 5000 + '$1,000' ? 
+
+  SELECT 5000 + TO_NUMBER('$1,000','L9,999')
+  FROM DUAL ; 
+
+     input     output       function
+     SYSDATE   MM/DD/YY     TO_CHAR
+     MM/DD/YY  DD-MON-YY    TO_DATE 
+     default   other        TO_CHAR
+     other     default      TO_DATE
+     5000      $5,000       TO_CHAR
+     $5,000     5000        TO_NUMBER
+
+
+
+
+
+
